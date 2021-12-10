@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import Cart from "../Components/Cart";
 import * as atlas from "azure-maps-control";
-import * as azmapsrest from "azure-maps-rest";
 import dotenv from "dotenv";
 
 var datasource, popup, testData;
@@ -130,8 +129,8 @@ function Home() {
   }
   useEffect(() => {
     addLayer();
-  }, [isSymbolLayer]);
-
+  }, [addLayer, isSymbolLayer]);
+ 
   function bubbleClicked(e) {
     var properties = e.shapes[0].getProperties();
 

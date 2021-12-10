@@ -23,7 +23,7 @@ const Vaccine = () => {
                 typically takes 2 weeks after vaccination for the body to build protection (immunity) against the virus
                 that causes COVID-19.</p>
         </div>
-        <button id="vaccine-btn"><a href="https://www.cowin.gov.in/home" target="_blank">GET VACCINATED</a></button>
+        <button id="vaccine-btn"><a href="https://www.cowin.gov.in/home">GET VACCINATED</a></button>
     </section>
 
   </Cart> );
