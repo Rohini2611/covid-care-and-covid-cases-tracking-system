@@ -126,11 +126,11 @@ function Home() {
         });
       }
     });
-  });
+  }, [isSymbolLayer]);
 
   useEffect(() => {
     addLayer();
-  }, [addLayer, isSymbolLayer]);
+  }, [addLayer]);
 
   function bubbleClicked(e) {
     var properties = e.shapes[0].getProperties();
