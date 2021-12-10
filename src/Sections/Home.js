@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import Cart from "../Components/Cart";
 import * as atlas from "azure-maps-control";
 import dotenv from "dotenv";
@@ -51,7 +51,7 @@ function Home() {
     });
   };
 
-  function addLayer() {
+  const addLayer = useCallback(() => {
     if (!map.current) return;
     //Wait until the map resources are ready.
     map.current.events.add("ready", function () {
@@ -126,11 +126,12 @@ function Home() {
         });
       }
     });
-  }
+  });
+
   useEffect(() => {
     addLayer();
   }, [addLayer, isSymbolLayer]);
- 
+
   function bubbleClicked(e) {
     var properties = e.shapes[0].getProperties();
 
