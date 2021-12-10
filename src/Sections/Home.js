@@ -16,41 +16,6 @@ function Home() {
   var popupTemplate =
     '<div class="Infobox"><div class="name">Country : {iCountry}</div><div class="name">Confirmed : {iConfirmed} </div><div class="name">Recovered : {iRecovered} </div><div class="name">Deaths   : {iDeaths}</div></div>';
 
-  const getData = async () => {
-    const res = await fetch(`https://disease.sh/v3/covid-19/countries`);
-    let newData = await res.json();
-    setData(newData);
-
-    var testDataNew = newData.map((item) => {
-      return new atlas.data.Feature(
-        new atlas.data.Point([item.countryInfo.long, item.countryInfo.lat]),
-        {
-          ...item,
-        }
-      );
-    });
-
-    testData = testDataNew;
-  };
-
-  const getMap = () => {
-    dotenv.config();
-    var API_KEY = process.env.REACT_APP_API_KEY;
-
-    map.current = new atlas.Map("myMap", {
-      style: "grayscale_light",
-      zoom: 1.5,
-      view: "Auto",
-
-      //Add authentication details for connecting to Azure Maps.
-      authOptions: {
-        //Use an Azure Maps key. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
-        authType: "subscriptionKey",
-        subscriptionKey: API_KEY,
-      },
-    });
-  };
-
   const addLayer = useCallback(() => {
     if (!map.current) return;
     //Wait until the map resources are ready.
@@ -161,7 +126,7 @@ function Home() {
         });
       }
     });
-  }, [isSymbolLayer]);
+  }, [isSymbolLayer,popupTemplate]);
 
   useEffect(() => {
     addLayer();
@@ -188,6 +153,41 @@ function Home() {
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
+    const getData = async () => {
+      const res = await fetch(`https://disease.sh/v3/covid-19/countries`);
+      let newData = await res.json();
+      setData(newData);
+  
+      var testDataNew = newData.map((item) => {
+        return new atlas.data.Feature(
+          new atlas.data.Point([item.countryInfo.long, item.countryInfo.lat]),
+          {
+            ...item,
+          }
+        );
+      });
+  
+      testData = testDataNew;
+    };
+  
+    const getMap = () => {
+      dotenv.config();
+      var API_KEY = process.env.REACT_APP_API_KEY;
+  
+      map.current = new atlas.Map("myMap", {
+        style: "grayscale_light",
+        zoom: 1.5,
+        view: "Auto",
+  
+        //Add authentication details for connecting to Azure Maps.
+        authOptions: {
+          //Use an Azure Maps key. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
+          authType: "subscriptionKey",
+          subscriptionKey: API_KEY,
+        },
+      });
+    };
+      
     getData();
     getMap();
     addLayer();
