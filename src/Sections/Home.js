@@ -109,7 +109,24 @@ function Home() {
         if (symbolLayer) map.current.layers.remove(symbolLayer);
         map.current.layers.add(bubbleLayer);
 
-        map.current.events.add("mouseover", bubbleLayer, bubbleClicked);
+        map.current.events.add("mouseover", bubbleLayer,         function (e) {
+          var properties = e.shapes[0].getProperties();
+      
+          var content = popupTemplate
+            .replace(/{iCountry}/g, properties.country)
+            .replace(/{iConfirmed}/g, properties.cases)
+            .replace(/{iRecovered}/g, properties.recovered)
+            .replace(/{iDeaths}/g, properties.deaths);
+      
+          var coordinate = e.shapes[0].getCoordinates();
+      
+          popup.setOptions({
+            content: content,
+            position: coordinate,
+          });
+      
+          popup.open(map.current);
+        });
 
         map.current.events.add("mouseleave", bubbleLayer, function () {
           popup.close(map.current);
@@ -144,7 +161,7 @@ function Home() {
         });
       }
     });
-  }, [isSymbolLayer,bubbleClicked]);
+  }, [isSymbolLayer]);
 
   useEffect(() => {
     addLayer();
