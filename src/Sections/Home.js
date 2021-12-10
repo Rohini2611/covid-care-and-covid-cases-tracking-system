@@ -119,7 +119,25 @@ function Home() {
         if (bubbleLayer) map.current.layers.remove(bubbleLayer);
         map.current.layers.add(symbolLayer);
 
-        map.current.events.add("mouseover", symbolLayer, bubbleClicked);
+        map.current.events.add("mouseover", symbolLayer, 
+        function (e) {
+            var properties = e.shapes[0].getProperties();
+        
+            var content = popupTemplate
+              .replace(/{iCountry}/g, properties.country)
+              .replace(/{iConfirmed}/g, properties.cases)
+              .replace(/{iRecovered}/g, properties.recovered)
+              .replace(/{iDeaths}/g, properties.deaths);
+        
+            var coordinate = e.shapes[0].getCoordinates();
+        
+            popup.setOptions({
+              content: content,
+              position: coordinate,
+            });
+        
+            popup.open(map.current);
+          });
 
         map.current.events.add("mouseleave", symbolLayer, function () {
           popup.close(map.current);
@@ -132,24 +150,24 @@ function Home() {
     addLayer();
   }, [addLayer]);
 
-function bubbleClicked(e) {
-    var properties = e.shapes[0].getProperties();
+// function bubbleClicked(e) {
+//     var properties = e.shapes[0].getProperties();
 
-    var content = popupTemplate
-      .replace(/{iCountry}/g, properties.country)
-      .replace(/{iConfirmed}/g, properties.cases)
-      .replace(/{iRecovered}/g, properties.recovered)
-      .replace(/{iDeaths}/g, properties.deaths);
+//     var content = popupTemplate
+//       .replace(/{iCountry}/g, properties.country)
+//       .replace(/{iConfirmed}/g, properties.cases)
+//       .replace(/{iRecovered}/g, properties.recovered)
+//       .replace(/{iDeaths}/g, properties.deaths);
 
-    var coordinate = e.shapes[0].getCoordinates();
+//     var coordinate = e.shapes[0].getCoordinates();
 
-    popup.setOptions({
-      content: content,
-      position: coordinate,
-    });
+//     popup.setOptions({
+//       content: content,
+//       position: coordinate,
+//     });
 
-    popup.open(map.current);
-  }
+//     popup.open(map.current);
+//   }
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
