@@ -126,13 +126,13 @@ function Home() {
         });
       }
     });
-  }, [isSymbolLayer]);
+  }, [isSymbolLayer,bubbleClicked]);
 
   useEffect(() => {
     addLayer();
   }, [addLayer]);
 
-  function bubbleClicked(e) {
+function bubbleClicked(e) {
     var properties = e.shapes[0].getProperties();
 
     var content = popupTemplate
