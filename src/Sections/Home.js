@@ -3,9 +3,6 @@ import Cart from "../Components/Cart";
 import * as atlas from "azure-maps-control";
 import dotenv from "dotenv";
 
-// Added test purpose only
-import loadLocaldata from "../test.json";
-
 var datasource, popup, testData;
 var bubbleLayer, symbolLayer;
 
@@ -137,7 +134,7 @@ function Home() {
   useEffect(() => {
     if (map.current) return; // initialize map only once
     const getData = async () => {
-      const res = await fetch(`https://disease.sh/v3/covid-19/countries0`);
+      const res = await fetch(`https://disease.sh/v3/covid-19/countries`);
       let newData = await res.json();
       setData(newData);
 
@@ -150,8 +147,6 @@ function Home() {
         );
       });
 
-      // added test purpose only;
-      if (testDataNew.length === 0) testDataNew = [...loadLocaldata];
       testData = testDataNew;
     };
 
