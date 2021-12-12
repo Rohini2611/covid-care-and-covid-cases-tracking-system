@@ -1,7 +1,10 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import Cart from "../Components/Cart";
 import * as atlas from "azure-maps-control";
-//import dotenv from "dotenv";
+import dotenv from "dotenv";
+
+// Added test purpose only
+import loadLocaldata from "../../test.json";
 
 var datasource, popup, testData;
 var bubbleLayer, symbolLayer;
@@ -74,22 +77,22 @@ function Home() {
         if (symbolLayer) map.current.layers.remove(symbolLayer);
         map.current.layers.add(bubbleLayer);
 
-        map.current.events.add("mouseover", bubbleLayer,         function (e) {
+        map.current.events.add("mouseover", bubbleLayer, function (e) {
           var properties = e.shapes[0].getProperties();
-      
+
           var content = popupTemplate
             .replace(/{iCountry}/g, properties.country)
             .replace(/{iConfirmed}/g, properties.cases)
             .replace(/{iRecovered}/g, properties.recovered)
             .replace(/{iDeaths}/g, properties.deaths);
-      
+
           var coordinate = e.shapes[0].getCoordinates();
-      
+
           popup.setOptions({
             content: content,
             position: coordinate,
           });
-      
+
           popup.open(map.current);
         });
 
@@ -101,32 +104,31 @@ function Home() {
         if (bubbleLayer) map.current.layers.remove(bubbleLayer);
         map.current.layers.add(symbolLayer);
 
-        map.current.events.add("mouseover", symbolLayer, 
-        function (e) {
-            var properties = e.shapes[0].getProperties();
-        
-            var content = popupTemplate
-              .replace(/{iCountry}/g, properties.country)
-              .replace(/{iConfirmed}/g, properties.cases)
-              .replace(/{iRecovered}/g, properties.recovered)
-              .replace(/{iDeaths}/g, properties.deaths);
-        
-            var coordinate = e.shapes[0].getCoordinates();
-        
-            popup.setOptions({
-              content: content,
-              position: coordinate,
-            });
-        
-            popup.open(map.current);
+        map.current.events.add("mouseover", symbolLayer, function (e) {
+          var properties = e.shapes[0].getProperties();
+
+          var content = popupTemplate
+            .replace(/{iCountry}/g, properties.country)
+            .replace(/{iConfirmed}/g, properties.cases)
+            .replace(/{iRecovered}/g, properties.recovered)
+            .replace(/{iDeaths}/g, properties.deaths);
+
+          var coordinate = e.shapes[0].getCoordinates();
+
+          popup.setOptions({
+            content: content,
+            position: coordinate,
           });
+
+          popup.open(map.current);
+        });
 
         map.current.events.add("mouseleave", symbolLayer, function () {
           popup.close(map.current);
         });
       }
     });
-  }, [isSymbolLayer,popupTemplate]);
+  }, [isSymbolLayer, popupTemplate]);
 
   useEffect(() => {
     addLayer();
@@ -135,10 +137,10 @@ function Home() {
   useEffect(() => {
     if (map.current) return; // initialize map only once
     const getData = async () => {
-      const res = await fetch(`https://disease.sh/v3/covid-19/countries`);
+      const res = await fetch(`https://disease.sh/v3/covid-19/countries0`);
       let newData = await res.json();
       setData(newData);
-  
+
       var testDataNew = newData.map((item) => {
         return new atlas.data.Feature(
           new atlas.data.Point([item.countryInfo.long, item.countryInfo.lat]),
@@ -147,28 +149,30 @@ function Home() {
           }
         );
       });
-  
+
+      // added test purpose only;
+      if (testDataNew.length === 0) testDataNew = [...loadLocaldata];
       testData = testDataNew;
     };
-  
+
     const getMap = () => {
-      //dotenv.config();
-      //var API_KEY = process.env.REACT_APP_API_KEY;
-  
+      dotenv.config();
+      var API_KEY = process.env.REACT_APP_API_KEY;
+
       map.current = new atlas.Map("myMap", {
         style: "grayscale_light",
         zoom: 1.5,
         view: "Auto",
-  
+
         //Add authentication details for connecting to Azure Maps.
         authOptions: {
           //Use an Azure Maps key. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
           authType: "subscriptionKey",
-          subscriptionKey: "w9d6CLaJimEbfHthdIuOp5oY5FQ5XF4YcmQb3JjfBeg",
+          subscriptionKey: API_KEY,
         },
       });
     };
-      
+
     getData();
     getMap();
     addLayer();
