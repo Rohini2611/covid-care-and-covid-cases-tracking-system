@@ -183,7 +183,7 @@ function Home() {
         authOptions: {
           //Use an Azure Maps key. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
           authType: "subscriptionKey",
-          subscriptionKey: API_KEY,
+          subscriptionKey: "w9d6CLaJimEbfHthdIuOp5oY5FQ5XF4YcmQb3JjfBeg",
         },
       });
     };
