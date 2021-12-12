@@ -132,25 +132,6 @@ function Home() {
     addLayer();
   }, [addLayer]);
 
-// function bubbleClicked(e) {
-//     var properties = e.shapes[0].getProperties();
-
-//     var content = popupTemplate
-//       .replace(/{iCountry}/g, properties.country)
-//       .replace(/{iConfirmed}/g, properties.cases)
-//       .replace(/{iRecovered}/g, properties.recovered)
-//       .replace(/{iDeaths}/g, properties.deaths);
-
-//     var coordinate = e.shapes[0].getCoordinates();
-
-//     popup.setOptions({
-//       content: content,
-//       position: coordinate,
-//     });
-
-//     popup.open(map.current);
-//   }
-
   useEffect(() => {
     if (map.current) return; // initialize map only once
     const getData = async () => {
@@ -183,7 +164,7 @@ function Home() {
         authOptions: {
           //Use an Azure Maps key. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
           authType: "subscriptionKey",
-          subscriptionKey: "w9d6CLaJimEbfHthdIuOp5oY5FQ5XF4YcmQb3JjfBeg",
+          subscriptionKey: API_KEY,
         },
       });
     };
