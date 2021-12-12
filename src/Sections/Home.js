@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import Cart from "../Components/Cart";
 import * as atlas from "azure-maps-control";
-import dotenv from "dotenv";
+//import dotenv from "dotenv";
 
 var datasource, popup, testData;
 var bubbleLayer, symbolLayer;
@@ -152,8 +152,8 @@ function Home() {
     };
   
     const getMap = () => {
-      dotenv.config();
-      var API_KEY = process.env.REACT_APP_API_KEY;
+      //dotenv.config();
+      //var API_KEY = process.env.REACT_APP_API_KEY;
   
       map.current = new atlas.Map("myMap", {
         style: "grayscale_light",
@@ -164,7 +164,7 @@ function Home() {
         authOptions: {
           //Use an Azure Maps key. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
           authType: "subscriptionKey",
-          subscriptionKey: API_KEY,
+          subscriptionKey: "w9d6CLaJimEbfHthdIuOp5oY5FQ5XF4YcmQb3JjfBeg",
         },
       });
     };
