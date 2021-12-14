@@ -2,7 +2,11 @@
 
 This project is created using [Create React App](https://github.com/facebook/create-react-app) template. 
 
-## Steps to run code in Visual code
+## Steps to run code in Visual Studio Code 
+
+Download latest version of [Visual Studio Code](https://code.visualstudio.com/).
+
+Create [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) of current project.
 
 In the project directory, you can run:
 
