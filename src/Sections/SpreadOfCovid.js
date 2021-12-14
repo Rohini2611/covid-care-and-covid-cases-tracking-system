@@ -1,10 +1,14 @@
 import Cart from "../Components/Cart";
-
-import coughing from "../images/coughing.svg";
-import hand_shake from "../images/hand_shake.svg";
-import touching_surface from "../images/touching_surface.svg";
+import dotenv from "dotenv";
 
 const SpreadOfCovid = () => {
+  dotenv.config();
+  var BLOB_KEY = process.env.REACT_APP_BLOB_KEY;
+
+  var coughing = `https://${BLOB_KEY}.blob.core.windows.net/images/coughing.svg`;
+  var hand_shake = `https://${BLOB_KEY}.blob.core.windows.net/images/hand_shake.svg`;
+  var touching_surface = `https://${BLOB_KEY}.blob.core.windows.net/images/touching_surface.svg`;
+
   return (
     <Cart>
       <section id="sect-awareness">

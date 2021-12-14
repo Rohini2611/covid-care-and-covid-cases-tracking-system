@@ -139,7 +139,7 @@ code {
 #sect-symptoms{
   text-align: center;
   padding: 2rem 1rem;
-  background: url("./images/symptoms_bg.jpg") no-repeat center/cover;
+  background: url("../public/symptoms_bg.jpg") no-repeat center/cover;
   color: whitesmoke;
 }
 
@@ -221,7 +221,7 @@ code {
 
 #sect-vaccines{
   
-  background: url("./images/vaccine_1.jpg") no-repeat center/cover;
+  background: url("../public/vaccine_1.jpg") no-repeat center/cover;
   text-align: center;
   color:whitesmoke;
   padding: 2rem;
@@ -345,7 +345,7 @@ code {
 }
 
 #facts-img-container{
-  background: url("./images/vaccine_2.jpg") no-repeat center/cover;
+  background: url("../public/vaccine_2.jpg") no-repeat center/cover;
   height: 100vh;
   overflow: auto;
 }

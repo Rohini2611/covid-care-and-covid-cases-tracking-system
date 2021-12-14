@@ -1,13 +1,19 @@
 import Cart from "../Components/Cart";
 
-import wash_hands from "../images/wash_hands.svg";
-import wear_mask from "../images/wear_mask.svg";
-import keep_distance from "../images/keep_distance.svg";
-import medical from "../images/medical.svg";
-import stay_home from "../images/stay_home.svg";
-import cover from "../images/cover.svg";
+import dotenv from "dotenv";
 
 const Precautions = () => {
+
+  dotenv.config();
+  var BLOB_KEY = process.env.REACT_APP_BLOB_KEY;
+
+  var wash_hands = `https://${BLOB_KEY}.blob.core.windows.net/images/wash_hands.svg`;
+  var wear_mask = `https://${BLOB_KEY}.blob.core.windows.net/images/wear_mask.svg`;
+  var keep_distance = `https://${BLOB_KEY}.blob.core.windows.net/images/keep_distance.svg`;
+  var medical = `https://${BLOB_KEY}.blob.core.windows.net/images/images/medical.svg`;
+  var stay_home = `https://${BLOB_KEY}.blob.core.windows.net/images/stay_home.svg`;
+  var cover = `https://${BLOB_KEY}.blob.core.windows.net/images/images/cover.svg`;
+
   return (
     <Cart>
       <section id="sect-precautions">
