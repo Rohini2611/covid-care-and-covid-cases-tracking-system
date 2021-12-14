@@ -50,8 +50,10 @@ There are several different ways in which the map can be zoomed, panned, rotated
 ### [Keyboard shortcuts](https://docs.microsoft.com/en-us/azure/azure-maps/map-accessibility#keyboard-shortcuts)
 The map has a number of [keyboard shortcuts](https://docs.microsoft.com/en-us/azure/azure-maps/map-accessibility#keyboard-shortcuts) built in that make it easier to use the map. These keyboard shortcuts work when the map has focus.
 
+##
 <img src="./screenshots/Capture_1.PNG" width="100%"><img src="./screenshots/Capture_2.PNG" width="100%"><img src="./screenshots/Capture_3.PNG" width="100%">
 
 <img src="./screenshots/Capture_4.PNG" width="100%"><img src="./screenshots/Capture_5.PNG" width="100%"><img src="./screenshots/Capture_6.PNG" width="100%">
 <img src="./screenshots/Capture_7.PNG" width="100%"><img src="./screenshots/Capture_8.PNG" width="100%"><img src="./screenshots/Capture_9.PNG" width="100%">
+<img src="./screenshots/Capture_10.PNG" width="100%">
 
