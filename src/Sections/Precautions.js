@@ -10,9 +10,9 @@ const Precautions = () => {
   var wash_hands = `https://${BLOB_KEY}.blob.core.windows.net/images/wash_hands.svg`;
   var wear_mask = `https://${BLOB_KEY}.blob.core.windows.net/images/wear_mask.svg`;
   var keep_distance = `https://${BLOB_KEY}.blob.core.windows.net/images/keep_distance.svg`;
-  var medical = `https://${BLOB_KEY}.blob.core.windows.net/images/images/medical.svg`;
+  var medical = `https://${BLOB_KEY}.blob.core.windows.net/images/medical.svg`;
   var stay_home = `https://${BLOB_KEY}.blob.core.windows.net/images/stay_home.svg`;
-  var cover = `https://${BLOB_KEY}.blob.core.windows.net/images/images/cover.svg`;
+  var cover = `https://${BLOB_KEY}.blob.core.windows.net/images/cover.svg`;
 
   return (
     <Cart>
