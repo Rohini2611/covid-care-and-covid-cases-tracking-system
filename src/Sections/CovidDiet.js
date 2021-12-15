@@ -10,7 +10,7 @@ const CovidDiet = () => {
   var breakfast = `https://${BLOB_KEY}.blob.core.windows.net/images/breakfast.jpg`;
   var lunch = `https://${BLOB_KEY}.blob.core.windows.net/images/lunch.jpg`;
   var evening = `https://${BLOB_KEY}.blob.core.windows.net/images/evening.jpg`;
-  var dinner = `https://${BLOB_KEY}.blob.core.windows.net/images/images/dinner.jpg`;
+  var dinner = `https://${BLOB_KEY}.blob.core.windows.net/images/dinner.jpg`;
 
   return (
     <Cart>
