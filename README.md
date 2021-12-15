@@ -34,10 +34,11 @@ Then get [primary key](https://docs.microsoft.com/en-us/azure/azure-maps/how-to-
 
 ## Azure Map Key managment in gitHub Actions 
 
-Create [secret key](https://docs.github.com/en/actions/security-guides/encrypted-secrets) 'REACT_APP_API_KEY' to store Azure Map Key in  [github secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets). Also update '.yml' which is used while code building with github actions. Add below 2 lines in .yml code in build code with github actions.
+Create [secret key](https://docs.github.com/en/actions/security-guides/encrypted-secrets) 'REACT_APP_API_KEY' to store Azure Map Key in  [github secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets). Also update '.yml' which is used while code building with github actions. Add below 3 lines in .yml code in build code with github actions.
 
         env:
           REACT_APP_API_KEY: ${{secrets.REACT_APP_API_KEY}}
+          REACT_APP_BLOB_KEY: ${{secrets.REACT_APP_BLOB_KEY}}
 
 ## Azure Blob storage
 
