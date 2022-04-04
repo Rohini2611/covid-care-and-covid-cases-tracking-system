@@ -15,7 +15,7 @@ const Navigation= () => {
     </li>
     <li>
     <NavLink to='Health' activeClassName={classes.active}>
-    Heath
+    Health
     </NavLink>
     </li>
     <li>
